@@ -1,15 +1,11 @@
 <template>
-  <hello-world />
+  <v-container>
+    <v-img class="mx-auto" src="@/assets/img/logo.png" width="50%"> </v-img>
+  </v-container>
 </template>
 
 <script>
-import HelloWorld from "../components/HelloWorld";
-
 export default {
   name: "Home",
-
-  components: {
-    HelloWorld,
-  },
 };
 </script>

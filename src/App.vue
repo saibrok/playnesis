@@ -1,50 +1,47 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+    <div class="toolbar-wrapper">
+      <v-toolbar app>
+        <v-toolbar-title>
+          <router-link to="/" tag="span" style="cursor: pointer">
+            {{ appTitle }}
+          </router-link>
+        </v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-toolbar-items>
+          <v-btn
+            flat
+            v-for="item in menuItems"
+            :key="item.title"
+            :to="item.path"
+          >
+            <v-icon left dark>{{ item.icon }}</v-icon>
+            {{ item.title }}
+          </v-btn>
+        </v-toolbar-items>
+      </v-toolbar>
+    </div>
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
-    <v-main>
-      <router-view />
-    </v-main>
+    <v-content>
+      <router-view></router-view>
+    </v-content>
   </v-app>
 </template>
 
 <script>
 export default {
   name: "App",
-
-  data: () => ({
-    //
-  }),
+  data() {
+    return {
+      appTitle: "The Rick and Morty API",
+      menuItems: [
+        { title: "Episodes", path: "/episodes", icon: "video_library" },
+        { title: "Characters", path: "/characters", icon: "face" },
+        { title: "Locations", path: "/locations", icon: "location_on" },
+      ],
+    };
+  },
 };
 </script>
+
+<style></style>
