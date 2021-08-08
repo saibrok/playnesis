@@ -1,16 +1,16 @@
 <template>
     <v-app>
         <div class="toolbar-wrapper">
-            <v-toolbar app>
+            <v-app-bar app>
                 <v-toolbar-title>
-                    <router-link to="/" tag="span" style="cursor: pointer">
+                    <v-btn text to="/">
                         {{ appTitle }}
-                    </router-link>
+                    </v-btn>
                 </v-toolbar-title>
                 <v-spacer></v-spacer>
                 <v-toolbar-items>
                     <v-btn
-                        flat
+                        text
                         v-for="item in menuItems"
                         :key="item.title"
                         :to="item.path"
@@ -19,12 +19,14 @@
                         {{ item.title }}
                     </v-btn>
                 </v-toolbar-items>
-            </v-toolbar>
+            </v-app-bar>
         </div>
 
-        <v-content>
-            <router-view></router-view>
-        </v-content>
+        <v-main>
+            <keep-alive>
+                <router-view :key="$route.path"></router-view>
+            </keep-alive>
+        </v-main>
     </v-app>
 </template>
 
