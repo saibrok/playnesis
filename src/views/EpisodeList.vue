@@ -80,8 +80,8 @@ export default {
             await this.$nextTick();
             if (!this.allEpisodes[this.episodeCode]) {
                 api.getEpisodesByFilter({
-                    episodeName: null,
-                    episodeCode: this.episodeCode,
+                    name: null,
+                    episode: this.episodeCode,
                 })
                     .then((response) => {
                         const currentEpisode = response.data.results.map((item) => {
